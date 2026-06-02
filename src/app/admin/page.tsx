@@ -103,6 +103,14 @@ export default function AdminPanel() {
     showToast(`Agendamento de ${app.clientName} marcado como ${newStatus.toLowerCase()}.`);
   };
 
+  // Update Payment Status
+  const handlePaymentStatusChange = (app: Appointment, newPaymentStatus: PaymentStatus) => {
+    const updated = { ...app, paymentStatus: newPaymentStatus };
+    updateAppointment(updated);
+    refreshData();
+    showToast(`Status de pagamento de ${app.clientName} alterado para ${newPaymentStatus}.`);
+  };
+
   // Delete Appointment
   const handleDelete = (id: string) => {
     if (confirm('Tem certeza que deseja excluir permanentemente este agendamento?')) {
@@ -705,15 +713,21 @@ export default function AdminPanel() {
                           <span className="font-semibold text-zinc-850 dark:text-zinc-200 uppercase">
                             {PAYMENT_METHODS.find(p => p.id === app.paymentMethod)?.name}
                           </span>
-                          <span className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold uppercase ${
-                            app.paymentStatus === 'Pago'
-                              ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
-                              : app.paymentStatus === 'Cancelado'
-                              ? 'bg-red-500/10 text-red-500'
-                              : 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-450'
-                          }`}>
-                            {app.paymentStatus || 'Pendente'}
-                          </span>
+                          <select
+                            value={app.paymentStatus || 'Pendente'}
+                            onChange={(e) => handlePaymentStatusChange(app, e.target.value as PaymentStatus)}
+                            className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold uppercase outline-hidden cursor-pointer border-0 ${
+                              app.paymentStatus === 'Pago'
+                                ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                                : app.paymentStatus === 'Cancelado'
+                                ? 'bg-red-500/10 text-red-500'
+                                : 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-450'
+                            }`}
+                          >
+                            <option value="Pendente" className="bg-white dark:bg-[#131c2e] text-yellow-600 dark:text-yellow-450">Pendente</option>
+                            <option value="Pago" className="bg-white dark:bg-[#131c2e] text-emerald-600 dark:text-emerald-400">Pago</option>
+                            <option value="Cancelado" className="bg-white dark:bg-[#131c2e] text-red-500">Cancelado</option>
+                          </select>
                         </div>
                       </div>
                       <div className="flex flex-col pt-1">

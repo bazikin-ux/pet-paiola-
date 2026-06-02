@@ -8,6 +8,7 @@
  */
 
 import { Appointment } from '@/types';
+import { PAYMENT_CONFIG } from '@/config/payment';
 
 // Tipagem para resposta genérica de criação de pagamento
 export interface PaymentResponse {

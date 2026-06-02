@@ -122,7 +122,7 @@ export default function Agendar() {
     setValidationError('');
 
     // Save to Database
-    addAppointment({
+    const newApp = addAppointment({
       clientName,
       clientPhone,
       petName,
@@ -135,6 +135,35 @@ export default function Agendar() {
       totalValue,
       paymentMethod,
     });
+
+    /**
+     * =========================================================================
+     * PONTO DE INTEGRAÇÃO FUTURA COM GATEWAYS DE PAGAMENTO
+     * =========================================================================
+     * Quando a integração real com Mercado Pago, Stripe ou PagSeguro estiver ativa:
+     * 
+     * 1. Verificar se a forma de pagamento escolhida exige pagamento online (ex: PIX ou Cartão)
+     *    e se o gateway está ativo no arquivo `src/config/payment.ts`.
+     * 
+     * 2. Exemplo de chamada de API:
+     *    const response = await fetch('/api/payments/checkout', {
+     *      method: 'POST',
+     *      body: JSON.stringify({ appointmentId: newApp.id, paymentMethod })
+     *    });
+     *    const data = await response.json();
+     * 
+     * 3. Redirecionar o usuário para a URL de checkout recebida ou abrir o modal do gateway:
+     *    if (data.checkoutUrl) {
+     *      window.location.href = data.checkoutUrl;
+     *      return;
+     *    }
+     * 
+     * 4. Exibir o QR Code na tela caso tenha sido gerado um PIX dinâmico.
+     * 
+     * NOTA: Atualmente mantemos apenas o salvamento no banco local (localStorage)
+     * e redirecionamos diretamente para a tela de sucesso para confirmação administrativa manual.
+     * =========================================================================
+     */
 
     setSuccess(true);
   };
