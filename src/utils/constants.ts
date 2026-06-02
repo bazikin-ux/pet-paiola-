@@ -10,8 +10,8 @@ export const SERVICES: Service[] = [
   { id: '7', name: 'Escovação de dentes', price: 49, duration: '15 min', description: 'Higienização bucal para prevenção de tártaro e mau hálito.' },
 ];
 
+// Dias de funcionamento oficial: Terça a Sábado (Segunda e Domingo fechado)
 export const DAYS: DayOfWeek[] = [
-  'Segunda',
   'Terça',
   'Quarta',
   'Quinta',
@@ -19,8 +19,8 @@ export const DAYS: DayOfWeek[] = [
   'Sábado'
 ];
 
+// Horários de atendimento disponíveis (Dentro da faixa das 09h às 17h)
 export const TIMES = [
-  '08:00',
   '09:00',
   '10:00',
   '11:00',

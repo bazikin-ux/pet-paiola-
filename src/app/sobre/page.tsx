@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { PawPrint, Heart, Sparkles, Shield, Trophy } from 'lucide-react';
+import { Heart, Sparkles, Shield, Trophy } from 'lucide-react';
 
 export default function Sobre() {
   const stats = [
@@ -32,21 +32,25 @@ export default function Sobre() {
         <div className="space-y-12 text-zinc-650 dark:text-zinc-350">
           
           <div className="bg-zinc-50 dark:bg-[#131c2e] p-8 md:p-12 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/40 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
+            <div className="space-y-4 text-left">
               <h2 className="text-2xl font-bold text-zinc-950 dark:text-white flex items-center gap-2">
                 <Heart className="text-emerald-500" /> Como tudo começou
               </h2>
-              <p className="text-sm leading-relaxed">
-                A Pet Paiola nasceu em 2021 do sonho de criar um espaço onde os cães se sentissem em casa, em vez do ambiente estressante comum em muitos locais. Sentíamos falta de um pet shop focado no bem-estar emocional do animal, e não apenas na limpeza.
+              <p className="text-sm leading-relaxed text-zinc-550 dark:text-zinc-400">
+                A Pet Paiola nasceu do sonho de criar um espaço onde os cães se sentissem em casa, em um ambiente tranquilo e amoroso. Sentíamos falta de um pet shop focado no bem-estar emocional do animal, e não apenas na limpeza.
               </p>
-              <p className="text-sm leading-relaxed">
-                Começamos pequenos, atendendo apenas vizinhos, mas com dedicação, produtos premium e foco absoluto na segurança, logo conquistamos a confiança dos tutores de toda a região.
+              <p className="text-sm leading-relaxed text-zinc-550 dark:text-zinc-400">
+                Começamos pequenos, mas com dedicação, produtos premium e foco absoluto na segurança, logo conquistamos a confiança dos tutores de Santo André e região.
               </p>
             </div>
             
             <div className="flex justify-center">
-              <div className="p-8 bg-emerald-500/10 rounded-full text-emerald-500 animate-float">
-                <PawPrint className="w-28 h-28" />
+              <div className="relative h-44 w-44 overflow-hidden rounded-full border-4 border-emerald-500 shadow-xl animate-float">
+                <img 
+                  src="/logo.png" 
+                  alt="Pet Paiola Logo Oficial" 
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -79,8 +83,23 @@ export default function Sobre() {
               </div>
               <h3 className="text-xl font-bold text-zinc-950 dark:text-white">Nossa Visão</h3>
               <p className="text-sm leading-relaxed">
-                Ser reconhecida como a marca de referência em excelência de estética e saúde canina em São Paulo, mantendo sempre o atendimento humanizado e individualizado de cada cliente de quatro patas.
+                Ser reconhecida como a marca de referência em excelência de estética e saúde canina em Santo André, mantendo sempre o atendimento humanizado e individualizado de cada cliente de quatro patas.
               </p>
+            </div>
+          </div>
+
+          {/* Localização / Endereço */}
+          <div className="bg-zinc-50 dark:bg-[#131c2e] p-8 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/40 space-y-4">
+            <h3 className="text-xl font-bold text-zinc-950 dark:text-white flex items-center gap-2">
+              📍 Onde Estamos
+            </h3>
+            <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+              Venha conhecer nosso espaço físico! Temos uma infraestrutura completa e segura para receber o seu melhor amigo.
+            </p>
+            <div className="text-sm text-zinc-800 dark:text-zinc-250 font-semibold bg-white dark:bg-[#0b0f19] p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 leading-relaxed shadow-2xs">
+              <span className="text-emerald-500 font-bold block mb-1">Endereço Oficial:</span>
+              Rua Inga, 328 — Jardim do Estádio<br />
+              Santo André - SP, CEP: 09175-050 — Brasil
             </div>
           </div>
 

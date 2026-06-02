@@ -55,16 +55,26 @@ export default function Agendar() {
     setClientPhone(formatted);
   };
 
+  // Get available slots based on weekday or Saturday
+  const getAvailableTimesForDay = (day: string) => {
+    if (day === 'Sábado') {
+      // Saturday only allows slots up to 13:00 (closes at 14:00)
+      return TIMES.filter(t => t !== '14:00' && t !== '15:00' && t !== '16:00');
+    }
+    return TIMES;
+  };
+
   // Re-fetch busy slots when selectedDay changes
   useEffect(() => {
     if (selectedDay) {
       const slots: { [key: string]: boolean } = {};
-      TIMES.forEach(time => {
+      const dayTimes = getAvailableTimesForDay(selectedDay);
+      dayTimes.forEach(time => {
         slots[time] = isTimeSlotOccupied(selectedDay as DayOfWeek, time);
       });
       setBusySlots(slots);
-      // Reset selected time if it becomes busy
-      if (selectedTime && slots[selectedTime]) {
+      // Reset selected time if it becomes busy or invalid for the day
+      if (selectedTime && (!dayTimes.includes(selectedTime) || slots[selectedTime])) {
         setSelectedTime('');
       }
     } else {
@@ -344,7 +354,7 @@ export default function Agendar() {
                 <div className="space-y-3 pt-2 animate-fadeIn">
                   <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block">Horários Disponíveis *</label>
                   <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
-                    {TIMES.map((t) => {
+                    {getAvailableTimesForDay(selectedDay).map((t) => {
                       const isBusy = busySlots[t];
                       return (
                         <button

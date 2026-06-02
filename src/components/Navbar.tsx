@@ -30,16 +30,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="bg-emerald-500 p-2 rounded-xl text-white group-hover:scale-105 transition-transform duration-300">
-              <PawPrint className="h-6 w-6" />
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="relative h-10 w-10 overflow-hidden rounded-xl group-hover:scale-105 transition-transform duration-300">
+              <img 
+                src="/logo.png" 
+                alt="Pet Paiola Logo" 
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-zinc-950 dark:text-white">
-                Pet <span className="text-emerald-500">Paiola</span>
+              <span className="text-lg font-bold tracking-tight text-zinc-950 dark:text-white leading-none">
+                PET <span className="text-emerald-500">PAIOLA</span>
               </span>
-              <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-medium -mt-1 hidden sm:inline">
-                Cuidado e carinho
+              <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider mt-0.5">
+                Banho & Tosa
               </span>
             </div>
           </Link>

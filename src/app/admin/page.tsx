@@ -538,7 +538,17 @@ export default function AdminPanel() {
                         
                         {/* Time Slots for each Day */}
                         {DAYS.map(day => {
+                          const isSaturdayClosedSlot = day === 'Sábado' && (time === '14:00' || time === '15:00' || time === '16:00');
                           const app = getSlotDetails(day, time);
+                          
+                          if (isSaturdayClosedSlot) {
+                            return (
+                              <td key={day} className="p-3 text-center bg-zinc-50 dark:bg-zinc-900/30 text-zinc-350 dark:text-zinc-650 text-xs font-semibold">
+                                Fechado
+                              </td>
+                            );
+                          }
+                          
                           return (
                             <td key={day} className="p-3 text-center">
                               {app ? (

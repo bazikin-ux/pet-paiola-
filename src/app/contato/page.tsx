@@ -60,8 +60,8 @@ export default function Contato() {
                   </div>
                   <div>
                     <h4 className="font-bold text-zinc-900 dark:text-white text-sm">Telefone / WhatsApp</h4>
-                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-500 font-medium">
-                      (11) 99999-9999
+                    <a href="https://wa.me/5511968205116" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-500 font-semibold">
+                      (11) 96820-5116
                     </a>
                   </div>
                 </div>
@@ -73,8 +73,8 @@ export default function Contato() {
                   </div>
                   <div>
                     <h4 className="font-bold text-zinc-900 dark:text-white text-sm">E-mail Comercial</h4>
-                    <a href="mailto:contato@petpaiola.com.br" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-500 font-medium">
-                      contato@petpaiola.com.br
+                    <a href="mailto:aelgviana3@gmail.com" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-500 font-semibold break-all">
+                      aelgviana3@gmail.com
                     </a>
                   </div>
                 </div>
@@ -87,9 +87,9 @@ export default function Contato() {
                   <div>
                     <h4 className="font-bold text-zinc-900 dark:text-white text-sm">Endereço</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                      Av. Principal dos Pets, 1500<br />
-                      Jardim Feliz, São Paulo - SP<br />
-                      CEP 01234-567
+                      Rua Inga, 328 — Jardim do Estádio<br />
+                      Santo André - SP<br />
+                      CEP: 09175-050
                     </p>
                   </div>
                 </div>
@@ -97,21 +97,28 @@ export default function Contato() {
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="bg-zinc-50 dark:bg-[#131c2e] p-4 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/40 relative overflow-hidden h-60 flex items-center justify-center text-center">
-              <div className="absolute inset-0 bg-emerald-100/30 dark:bg-emerald-500/5 backdrop-blur-xs flex flex-col items-center justify-center p-6 space-y-2">
-                <MapPin className="w-12 h-12 text-emerald-500 animate-bounce" />
-                <span className="font-bold text-zinc-900 dark:text-white text-sm">Mapa Interativo (Simulado)</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400">Jardim Feliz, São Paulo - SP</span>
-                <a 
-                  href="https://maps.google.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="mt-2 text-xs font-bold text-white bg-emerald-500 hover:bg-emerald-600 px-4 py-2 rounded-xl transition-all"
-                >
-                  Abrir no Google Maps
-                </a>
+            {/* Embedded Google Map */}
+            <div className="bg-zinc-50 dark:bg-[#131c2e] p-4 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/40 space-y-4 shadow-2xs">
+              <div className="w-full h-52 rounded-2xl overflow-hidden border border-zinc-250 dark:border-zinc-800">
+                <iframe
+                  src="https://maps.google.com/maps?q=Rua%20Inga,%20328%20-%20Jardim%20do%20Est%C3%A1dio,%20Santo%20Andr%C3%A9%20-%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  title="Localização Pet Paiola"
+                ></iframe>
               </div>
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=Rua%20Inga,%20328%20-%20Jardim%20do%20Est%C3%A1dio,%20Santo%20Andr%C3%A9%20-%20SP" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:scale-98 text-white font-bold py-2.5 px-4 rounded-xl transition-all shadow-xs text-sm"
+              >
+                <MapPin className="w-4 h-4" />
+                Como Chegar
+              </a>
             </div>
           </div>
 

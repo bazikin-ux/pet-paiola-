@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Pet Paiola - Cuidado, carinho e banho para seu melhor amigo',
-  description: 'Agende banho, tosa, hidratação e outros serviços para o seu cachorro no melhor pet shop da região.',
-  keywords: 'pet shop, banho e tosa, agendamento de pet, pet paiola, cachorro, cuidado animal',
+  title: 'Pet Paiola Banho & Tosa | Santo André',
+  description: 'Pet Shop especializado em banho e tosa em Santo André. Agende online o atendimento do seu pet de forma rápida e prática.',
+  keywords: 'Pet Shop Santo André, Banho e Tosa Santo André, Pet Paiola, Banho para Cachorros, Tosa Higiênica, Pet Shop Jardim do Estádio',
   authors: [{ name: 'Pet Paiola' }],
 };
 

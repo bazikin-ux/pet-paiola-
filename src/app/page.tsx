@@ -84,7 +84,7 @@ export default function Home() {
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
-                Pet <span className="text-emerald-500">Paiola</span>
+                PET <span className="text-emerald-500">PAIOLA</span>
               </h1>
               
               <p className="text-xl sm:text-2xl font-medium text-zinc-700 dark:text-zinc-300 italic">
@@ -117,13 +117,22 @@ export default function Home() {
             <div className="flex justify-center relative">
               <div className="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-emerald-500 to-yellow-400 p-3 shadow-2xl animate-float">
                 <div className="w-full h-full rounded-full bg-white dark:bg-[#131c2e] overflow-hidden flex flex-col items-center justify-center text-center p-6 space-y-4">
-                  <PawPrint className="w-20 h-20 text-emerald-500 animate-pulse" />
-                  <h3 className="text-xl font-bold text-zinc-950 dark:text-white">Pet Paiola Premium</h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    O maior e mais moderno centro de banho e tosa da região, com profissionais especializados.
+                  <div className="relative w-32 h-32 rounded-2xl overflow-hidden border border-zinc-150 dark:border-zinc-800">
+                    <img 
+                      src="/logo.png" 
+                      alt="PET PAIOLA Logo Oficial" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-zinc-950 dark:text-white uppercase tracking-tight">PET PAIOLA</h3>
+                  <p className="text-xs text-emerald-500 font-bold uppercase tracking-wider -mt-2">
+                    Banho & Tosa
                   </p>
-                  <div className="inline-flex items-center gap-1 bg-yellow-100 dark:bg-yellow-500/10 px-3 py-1 rounded-full text-yellow-600 dark:text-yellow-400 font-bold text-sm">
-                    <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 px-4">
+                    O melhor centro de estética animal de Santo André, cuidando com amor do seu melhor amigo!
+                  </p>
+                  <div className="inline-flex items-center gap-1 bg-yellow-100 dark:bg-yellow-500/10 px-3 py-1 rounded-full text-yellow-600 dark:text-yellow-400 font-bold text-xs">
+                    <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
                     4.9 / 5.0 no Google Reviews
                   </div>
                 </div>
@@ -259,43 +268,106 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. QUICK INFO & FOOTER PREVIEW */}
-      <section className="py-16 bg-emerald-500 text-white transition-colors duration-300">
+      {/* 5. VISITE A PET PAIOLA */}
+      <section className="py-20 bg-zinc-50 dark:bg-[#090d16] border-t border-zinc-200/50 dark:border-zinc-800/40 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+          <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 dark:text-white tracking-tight">
+              Visite a <span className="text-emerald-500">Pet Paiola</span>
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400">
+              Traga seu cãozinho para um momento relaxante e saia com ele cheiroso e feliz. Veja abaixo nossa localização e horários.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            <div className="flex flex-col items-center md:items-start gap-2">
-              <div className="bg-white/20 p-3 rounded-2xl">
-                <Clock className="w-6 h-6" />
+            {/* Info Column */}
+            <div className="lg:col-span-5 bg-white dark:bg-[#131c2e] p-8 rounded-3xl border border-zinc-200/65 dark:border-zinc-850 shadow-xs flex flex-col justify-between space-y-6">
+              
+              <div className="flex items-center gap-4">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 shrink-0">
+                  <img src="/logo.png" alt="PET PAIOLA" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-zinc-950 dark:text-white uppercase leading-none">PET PAIOLA</h3>
+                  <span className="text-xs text-emerald-500 font-bold uppercase tracking-wider mt-1 block">Banho & Tosa</span>
+                </div>
               </div>
-              <h3 className="text-lg font-bold">Horário de Funcionamento</h3>
-              <p className="text-sm text-emerald-50 opacity-90">Seg a Sex: 08h-12h e 13h-18h</p>
-              <p className="text-sm text-emerald-50 opacity-90">Sábado: 08h-12h e 13h-17h</p>
+
+              <div className="space-y-4 text-sm text-zinc-650 dark:text-zinc-350">
+                
+                {/* Endereço */}
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-xs uppercase tracking-wider text-zinc-400">Endereço</h4>
+                    <p className="mt-0.5 leading-relaxed">
+                      Rua Inga, 328 — Jardim do Estádio<br />
+                      Santo André - SP, CEP: 09175-050
+                    </p>
+                  </div>
+                </div>
+
+                {/* Funcionamento */}
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-xs uppercase tracking-wider text-zinc-400">Funcionamento</h4>
+                    <p className="mt-0.5 leading-relaxed">
+                      Terça a Sexta: 09h às 17h<br />
+                      Sábado: 09h às 14h<br />
+                      Segunda e Domingo: Fechado
+                    </p>
+                  </div>
+                </div>
+
+                {/* Telefone */}
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-xs uppercase tracking-wider text-zinc-400">Telefone / WhatsApp</h4>
+                    <a href="https://wa.me/5511968205116" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-500 transition-colors font-semibold text-zinc-800 dark:text-zinc-250 mt-0.5 block">
+                      (11) 96820-5116
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="https://wa.me/5511968205116"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-grow flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all"
+                >
+                  <Phone className="w-4 h-4 fill-white" />
+                  Falar no WhatsApp
+                </a>
+                <Link
+                  href="/agendar"
+                  className="flex-grow flex items-center justify-center gap-2 bg-zinc-900 dark:bg-emerald-500/10 hover:bg-zinc-800 dark:hover:bg-emerald-500/20 text-white dark:text-emerald-400 font-bold py-3 px-4 rounded-xl text-sm transition-all border border-zinc-800 dark:border-emerald-500/20"
+                >
+                  Agendar Agora
+                </Link>
+              </div>
+
             </div>
 
-            <div className="flex flex-col items-center md:items-start gap-2">
-              <div className="bg-white/20 p-3 rounded-2xl">
-                <MapPin className="w-6 h-6" />
+            {/* Map Column */}
+            <div className="lg:col-span-7 bg-white dark:bg-[#131c2e] p-4 rounded-3xl border border-zinc-200/60 dark:border-zinc-850 shadow-xs flex flex-col justify-between space-y-4">
+              <div className="w-full h-80 lg:h-full min-h-[300px] rounded-2xl overflow-hidden border border-zinc-250 dark:border-zinc-800">
+                <iframe
+                  src="https://maps.google.com/maps?q=Rua%20Inga,%20328%20-%20Jardim%20do%20Est%C3%A1dio,%20Santo%20Andr%C3%A9%20-%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  title="Localização Pet Paiola Principal"
+                ></iframe>
               </div>
-              <h3 className="text-lg font-bold">Onde Estamos</h3>
-              <p className="text-sm text-emerald-50 opacity-90">Av. Principal dos Pets, 1500</p>
-              <p className="text-sm text-emerald-50 opacity-90">Jardim Feliz, São Paulo - SP</p>
-            </div>
-
-            <div className="flex flex-col items-center md:items-start gap-2">
-              <div className="bg-white/20 p-3 rounded-2xl">
-                <Phone className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold">Fale Conosco</h3>
-              <p className="text-sm text-emerald-50 opacity-90">Telefone / WhatsApp</p>
-              <a 
-                href="https://wa.me/5511999999999" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white hover:underline font-bold text-lg"
-              >
-                (11) 99999-9999
-              </a>
             </div>
 
           </div>
