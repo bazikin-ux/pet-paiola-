@@ -16,7 +16,6 @@ export default function Navbar() {
     { name: 'Agendar', href: '/agendar' },
     { name: 'Sobre Nós', href: '/sobre' },
     { name: 'Contato', href: '/contato' },
-    { name: 'Painel Admin', href: '/admin' },
   ];
 
   const isActive = (path: string) => {
