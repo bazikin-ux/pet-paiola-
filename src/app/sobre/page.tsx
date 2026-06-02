@@ -47,7 +47,7 @@ export default function Sobre() {
             <div className="flex justify-center">
               <div className="relative h-44 w-44 overflow-hidden rounded-full border-4 border-emerald-500 shadow-xl animate-float">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpeg" 
                   alt="Pet Paiola Logo Oficial" 
                   className="h-full w-full object-cover"
                 />

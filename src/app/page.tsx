@@ -119,7 +119,7 @@ export default function Home() {
                 <div className="w-full h-full rounded-full bg-white dark:bg-[#131c2e] overflow-hidden flex flex-col items-center justify-center text-center p-6 space-y-4">
                   <div className="relative w-32 h-32 rounded-2xl overflow-hidden border border-zinc-150 dark:border-zinc-800">
                     <img 
-                      src="/logo.png" 
+                      src="/logo.jpeg" 
                       alt="PET PAIOLA Logo Oficial" 
                       className="w-full h-full object-cover"
                     />
@@ -287,7 +287,7 @@ export default function Home() {
               
               <div className="flex items-center gap-4">
                 <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 shrink-0">
-                  <img src="/logo.png" alt="PET PAIOLA" className="w-full h-full object-cover" />
+                  <img src="/logo.jpeg" alt="PET PAIOLA" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-zinc-950 dark:text-white uppercase leading-none">PET PAIOLA</h3>

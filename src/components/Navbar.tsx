@@ -33,7 +33,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative h-10 w-10 overflow-hidden rounded-xl group-hover:scale-105 transition-transform duration-300">
               <img 
-                src="/logo.png" 
+                src="/logo.jpeg" 
                 alt="Pet Paiola Logo" 
                 className="h-full w-full object-cover"
               />

@@ -14,7 +14,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center space-x-3">
               <div className="relative h-10 w-10 overflow-hidden rounded-xl">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpeg" 
                   alt="Pet Paiola Logo" 
                   className="h-full w-full object-cover"
                 />
