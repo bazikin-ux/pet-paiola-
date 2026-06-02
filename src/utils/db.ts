@@ -17,6 +17,7 @@ const MOCK_APPOINTMENTS: Appointment[] = [
     totalValue: 118,
     paymentMethod: 'pix',
     status: 'Concluído',
+    paymentStatus: 'Pago',
     createdAt: new Date(Date.now() - 86400000 * 2).toISOString(),
   },
   {
@@ -33,6 +34,7 @@ const MOCK_APPOINTMENTS: Appointment[] = [
     totalValue: 198,
     paymentMethod: 'credito',
     status: 'Pendente',
+    paymentStatus: 'Pendente',
     createdAt: new Date(Date.now() - 86400000 * 1).toISOString(),
   },
   {
@@ -49,6 +51,7 @@ const MOCK_APPOINTMENTS: Appointment[] = [
     totalValue: 114,
     paymentMethod: 'debito',
     status: 'Pendente',
+    paymentStatus: 'Pendente',
     createdAt: new Date().toISOString(),
   },
   {
@@ -65,6 +68,7 @@ const MOCK_APPOINTMENTS: Appointment[] = [
     totalValue: 188,
     paymentMethod: 'pix',
     status: 'Pendente',
+    paymentStatus: 'Pendente',
     createdAt: new Date().toISOString(),
   }
 ];
@@ -79,7 +83,12 @@ export const getAppointments = (): Appointment[] => {
   }
   
   try {
-    return JSON.parse(data);
+    const list = JSON.parse(data);
+    // Backwards compatibility migration for missing paymentStatus field
+    return list.map((a: any) => ({
+      ...a,
+      paymentStatus: a.paymentStatus || (a.status === 'Concluído' ? 'Pago' : 'Pendente')
+    }));
   } catch (error) {
     console.error('Failed to parse appointments from localStorage:', error);
     return MOCK_APPOINTMENTS;
@@ -91,12 +100,13 @@ export const saveAppointments = (appointments: Appointment[]): void => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appointments));
 };
 
-export const addAppointment = (appointment: Omit<Appointment, 'id' | 'createdAt' | 'status'>): Appointment => {
+export const addAppointment = (appointment: Omit<Appointment, 'id' | 'createdAt' | 'status' | 'paymentStatus'>): Appointment => {
   const appointments = getAppointments();
   const newAppointment: Appointment = {
     ...appointment,
     id: Math.random().toString(36).substring(2, 9),
     status: 'Pendente',
+    paymentStatus: 'Pendente',
     createdAt: new Date().toISOString(),
   };
   

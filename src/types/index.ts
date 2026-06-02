@@ -12,6 +12,8 @@ export type DayOfWeek = 'Segunda' | 'Terça' | 'Quarta' | 'Quinta' | 'Sexta' | '
 
 export type AppointmentStatus = 'Pendente' | 'Concluído' | 'Cancelado';
 
+export type PaymentStatus = 'Pendente' | 'Pago' | 'Cancelado';
+
 export interface Client {
   name: string;
   phone: string;
@@ -38,6 +40,7 @@ export interface Appointment {
   totalValue: number;
   paymentMethod: string;
   status: AppointmentStatus;
+  paymentStatus: PaymentStatus;
   createdAt: string;
 }
 

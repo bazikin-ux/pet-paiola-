@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import { getAppointments, updateAppointment, deleteAppointment } from '@/utils/db';
 import { SERVICES, DAYS, TIMES, PAYMENT_METHODS } from '@/utils/constants';
-import { Appointment, DayOfWeek, PetPorte, AppointmentStatus } from '@/types';
+import { Appointment, DayOfWeek, PetPorte, AppointmentStatus, PaymentStatus } from '@/types';
 
 export default function AdminPanel() {
   // Login State
@@ -57,6 +57,7 @@ export default function AdminPanel() {
   const [editServices, setEditServices] = useState<string[]>([]);
   const [editPayment, setEditPayment] = useState('');
   const [editStatus, setEditStatus] = useState<AppointmentStatus>('Pendente');
+  const [editPaymentStatus, setEditPaymentStatus] = useState<PaymentStatus>('Pendente');
 
   // Fetch appointments on load and when logged in
   useEffect(() => {
@@ -125,6 +126,7 @@ export default function AdminPanel() {
     setEditServices(app.services);
     setEditPayment(app.paymentMethod);
     setEditStatus(app.status);
+    setEditPaymentStatus(app.paymentStatus || 'Pendente');
   };
 
   const handleEditSubmit = (e: React.FormEvent) => {
@@ -150,7 +152,8 @@ export default function AdminPanel() {
       services: editServices,
       paymentMethod: editPayment,
       totalValue: total,
-      status: editStatus
+      status: editStatus,
+      paymentStatus: editPaymentStatus
     };
 
     updateAppointment(updated);
@@ -696,9 +699,22 @@ export default function AdminPanel() {
                         <span className="text-zinc-400">Dia e Horário:</span>
                         <span className="font-bold text-emerald-600 dark:text-emerald-400">{app.day} às {app.time}</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between items-center">
                         <span className="text-zinc-400">Pagamento:</span>
-                        <span className="font-semibold text-zinc-800 dark:text-zinc-200 uppercase">{PAYMENT_METHODS.find(p => p.id === app.paymentMethod)?.name}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold text-zinc-850 dark:text-zinc-200 uppercase">
+                            {PAYMENT_METHODS.find(p => p.id === app.paymentMethod)?.name}
+                          </span>
+                          <span className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold uppercase ${
+                            app.paymentStatus === 'Pago'
+                              ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                              : app.paymentStatus === 'Cancelado'
+                              ? 'bg-red-500/10 text-red-500'
+                              : 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-450'
+                          }`}>
+                            {app.paymentStatus || 'Pendente'}
+                          </span>
+                        </div>
                       </div>
                       <div className="flex flex-col pt-1">
                         <span className="text-zinc-400 mb-1">Serviços:</span>
@@ -936,7 +952,7 @@ export default function AdminPanel() {
               </div>
 
               {/* Payment / Status */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Forma de Pagamento</label>
                   <select
@@ -951,7 +967,7 @@ export default function AdminPanel() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Status</label>
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Status do Agendamento</label>
                   <select
                     value={editStatus}
                     onChange={(e) => setEditStatus(e.target.value as AppointmentStatus)}
@@ -959,6 +975,19 @@ export default function AdminPanel() {
                   >
                     <option value="Pendente">Pendente</option>
                     <option value="Concluído">Concluído</option>
+                    <option value="Cancelado">Cancelado</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Status do Pagamento</label>
+                  <select
+                    value={editPaymentStatus}
+                    onChange={(e) => setEditPaymentStatus(e.target.value as any)}
+                    className="w-full bg-zinc-50 dark:bg-[#0b0f19] border border-zinc-200 dark:border-zinc-850 rounded-lg px-3 py-2 text-xs text-zinc-900 dark:text-white"
+                  >
+                    <option value="Pendente">Pendente</option>
+                    <option value="Pago">Pago</option>
                     <option value="Cancelado">Cancelado</option>
                   </select>
                 </div>
